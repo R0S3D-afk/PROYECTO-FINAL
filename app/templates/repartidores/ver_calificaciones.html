@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Calificaciones</title>
+</head>
+<body>
+    <h1>Lista de Calificaciones</h1>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID Calificación</th>
+                <th>ID Pedido</th>
+                <th>ID Cliente</th>
+                <th>Calificación</th>
+                <th>Comentario</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for calificacion in calificaciones %}
+                <tr>
+                    <td>{{ calificacion.id }}</td>
+                    <td>{{ calificacion.id_pedido }}</td>
+                    <td>{{ calificacion.id_cliente }}</td>
+                    <td>{{ calificacion.calificacion }}</td>
+                    <td>{{ calificacion.comentario }}</td>
+                    <td>{{ calificacion.fecha }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ url_for('pedidos.mostrar_pedidos') }}">Volver a la Lista de Pedidos</a>
+</body>
+</html>

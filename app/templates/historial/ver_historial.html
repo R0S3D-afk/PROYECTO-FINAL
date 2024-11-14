@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Historial de Pedidos</title>
+</head>
+<body>
+    <h1>Historial de Pedidos</h1>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID Pedido</th>
+                <th>ID Repartidor</th>
+                <th>Fecha de Entrega</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pedido in historial %}
+                <tr>
+                    <td>{{ pedido.id_pedido }}</td>
+                    <td>{{ pedido.id_repartidor }}</td>
+                    <td>{{ pedido.fecha_entrega }}</td>
+                    <td>{{ pedido.estado }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ url_for('pedidos.mostrar_pedidos') }}">Volver a la Lista de Pedidos</a>
+</body>
+</html>

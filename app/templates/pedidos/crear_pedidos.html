@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Pedido</title>
+</head>
+<body>
+    <h1>Crear Pedido</h1>
+    
+    <form action="" method="POST">
+        <div>
+            <label for="id_cliente">ID del Cliente:</label>
+            <input type="number" id="id_cliente" name="id_cliente" required>
+        </div>
+        <div>
+            <label for="direccion_entrega">Dirección de Entrega:</label>
+            <input type="text" id="direccion_entrega" name="direccion_entrega" required>
+        </div>
+        <div>
+            <label for="contenido">Contenido:</label>
+            <textarea id="contenido" name="contenido" rows="4" cols="50"></textarea>
+        </div>
+        <div>
+            <label for="urgencia">Urgencia:</label>
+            <select id="urgencia" name="urgencia" required>
+                <option value="alta">Alta</option>
+                <option value="media">Media</option>
+                <option value="baja">Baja</option>
+            </select>
+        </div>
+        <div>
+            <button type="submit">Crear Pedido</button>
+        </div>
+    </form>
+
+    <a href="{{ url_for('pedidos.mostrar_pedidos') }}">Volver a la Lista de Pedidos</a>
+</body>
+</html>

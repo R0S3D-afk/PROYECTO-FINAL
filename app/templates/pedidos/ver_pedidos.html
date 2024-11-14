@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Pedidos</title>
+</head>
+<body>
+    <h1>Lista de Pedidos</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ID Cliente</th>
+                <th>Dirección de Entrega</th>
+                <th>Contenido</th>
+                <th>Urgencia</th>
+                <th>Estado</th>
+                <th>Fecha de Pedido</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pedido in pedidos %}
+                <tr>
+                    <td>{{ pedido.id }}</td>
+                    <td>{{ pedido.id_cliente }}</td>
+                    <td>{{ pedido.direccion_entrega }}</td>
+                    <td>{{ pedido.contenido }}</td>
+                    <td>{{ pedido.urgencia }}</td>
+                    <td>{{ pedido.estado }}</td>
+                    <td>{{ pedido.fecha_pedido }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
