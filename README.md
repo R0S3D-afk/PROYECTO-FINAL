@@ -4,7 +4,7 @@
 
 ```bash
 py -m venv venv
-./venv/Scrips/activate
+.\venv\Scripts\activate
 cd .\app\ 
 ```
 
