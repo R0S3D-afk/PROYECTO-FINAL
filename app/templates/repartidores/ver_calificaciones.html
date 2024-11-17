@@ -4,11 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ver Calificaciones</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse; /* Eliminar espacios entre bordes */
+            margin-top: 20px; /* Espacio superior */
+        }
+
+        th, td {
+            padding: 12px; /* Relleno interno */
+            text-align: left; /* Alinear texto a la izquierda */
+            border-bottom: 1px solid #ddd; /* Línea de separación */
+        }
+
+        th {
+            background-color: #007bff; /* Color de fondo azul para encabezados */
+            color: white; /* Texto blanco */
+        }
+
+        tr:hover {
+            background-color: #f1f1f1; /* Color de fondo al pasar el ratón */
+        }
+
+        a {
+            display: inline-block; /* Para que ocupe solo el espacio necesario */
+            margin-top: 20px; /* Espacio superior */
+            text-align: center; /* Centrar texto */
+            background-color: #28a745; /* Color verde */
+            color: white; /* Texto blanco */
+            padding: 10px 15px; /* Relleno del enlace */
+            text-decoration: none; /* Sin subrayado */
+            border-radius: 4px; /* Bordes redondeados */
+            transition: background-color 0.3s; /* Transición suave al pasar el ratón */
+        }
+
+        a:hover {
+            background-color: #218838; /* Color verde más oscuro al pasar el ratón */
+        }
+    </style>
 </head>
 <body>
     <h1>Lista de Calificaciones</h1>
     
-    <table border="1">
+    <table>
         <thead>
             <tr>
                 <th>ID Calificación</th>
@@ -33,6 +84,8 @@
         </tbody>
     </table>
 
-    <a href="{{ url_for('pedidos.mostrar_pedidos') }}">Volver a la Lista de Pedidos</a>
+    <!-- Enlaces para regresar -->
+    <a href="{{ url_for('pedidos.mostrar_pedidos') }}">Ir a la Lista de Pedidos</a>
+    <a href="{{ url_for('repartidores.repartidores_db') }}">Volver a la Lista de Repartidores</a>
 </body>
 </html>

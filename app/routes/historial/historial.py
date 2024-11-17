@@ -14,4 +14,3 @@ def ver_historial():
         conn.close()
 
     return render_template('historial/ver_historial.html', historial=historial)
-

@@ -3,7 +3,7 @@ from app.db import conexion
 
 calificaciones_bp = Blueprint('calificaciones', __name__)
 
-@calificaciones_bp.route('/ver_calificaciones', methods=['GET'])
+@calificaciones_bp.route('/', methods=['GET'])  # Cambiado a '/' para que coincida con el prefijo registrado en create_app()
 def ver_calificaciones():
     conn = conexion()
     try:
@@ -13,4 +13,4 @@ def ver_calificaciones():
     finally:
         conn.close()
 
-    return render_template('repartidores/ver_calificaciones.html', calificaciones=calificaciones)
+    return render_template('repartidores/ver_calificaciones.html', calificaciones=calificaciones)  # Asegúrate de pasar las calificaciones a la plantilla
