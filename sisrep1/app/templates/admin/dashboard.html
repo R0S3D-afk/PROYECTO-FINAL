@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administrador</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #f8f9fa;
+            padding-top: 20px;
+            padding-left: 20px;
+        }
+        .sidebar a {
+            display: block;
+            color: black;
+            padding: 10px;
+            text-decoration: none;
+        }
+        .sidebar a:hover {
+            background-color: #ddd;
+        }
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <h3>Admin Panel</h3>
+    <a href="{{ url_for('admin.dashboard') }}">Inicio</a>
+    <a href="{{ url_for('admin.ver_usuarios') }}">Ver Usuarios</a>
+    <a href="{{ url_for('admin.ver_pedidos') }}">Ver Pedidos</a>
+    <a href="{{ url_for('admin.ver_repartidores') }}">Ver Repartidores</a>
+    <a href="{{ url_for('admin.ver_historial') }}">Ver Historial</a>
+    <a href="{{ url_for('auth.logout') }}">Cerrar sesión</a> <!-- Ruta de logout -->
+</div>
+
+<div class="content">
+    <h1>Bienvenido al Panel de Administración</h1>
+    <p>Desde aquí puedes gestionar el sistema y ver la información de pedidos, usuarios y repartidores.</p>
+    <a href="{{ url_for('admin.dashboard') }}" class="btn btn-primary">Volver al Panel</a> <!-- Botón para volver al panel -->
+</div>
+
+</body>
+</html>

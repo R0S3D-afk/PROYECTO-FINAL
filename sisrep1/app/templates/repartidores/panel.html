@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel del Repartidor</title>
+    <style>
+        /* Reset de margenes y padding para una apariencia limpia */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        /* Container para centralizar el contenido */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Encabezado */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2em;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        /* Sección de contenido */
+        .content {
+            margin-top: 20px;
+        }
+
+        h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        /* Estilo para la lista de pedidos */
+        .pedido-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .pedido-item {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .pedido-item:hover {
+            background-color: #f1f1f1;
+        }
+
+        .pedido-info {
+            margin-bottom: 10px;
+        }
+
+        .pedido-info h4 {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .pedido-info p {
+            font-size: 1em;
+            margin-bottom: 8px;
+        }
+
+        .pedido-info .label {
+            font-weight: bold;
+        }
+
+        /* Estilo para los enlaces (botones) */
+        .action a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1em;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .action a:hover {
+            background-color: #45a049;
+        }
+
+        /* Estilo para el pie de página (enlaces de completar perfil y cerrar sesión) */
+        footer {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        footer a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+            font-size: 1.1em;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Bienvenido al Panel de Repartidor</h1>
+        </header>
+
+        <section class="content">
+            <h3>Pedidos disponibles:</h3>
+            
+            {% if pedidos %}
+                <ul class="pedido-list">
+                    {% for pedido in pedidos %}
+                        <li class="pedido-item">
+                            <div class="pedido-info">
+                                <h4>{{ pedido.descripcion }}</h4>
+                                <p><span class="label">Dirección de entrega:</span> {{ pedido.direccion_entrega }}</p>
+                                <p><span class="label">Urgencia:</span> {{ pedido.urgencia }}</p>
+                                <p><span class="label">Estado:</span> {{ pedido.estado }}</p>
+                            </div>
+                            <div class="action">
+                                <a href="{{ url_for('repartidores.tomar_pedido', pedido_id=pedido.id) }}">Tomar Pedido</a>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No hay pedidos disponibles en este momento.</p>
+            {% endif %}
+        </section>
+
+        <footer>
+            <a href="{{ url_for('repartidores.perfil') }}">Completar/Editar Perfil</a> | 
+            <a href="{{ url_for('auth.logout') }}">Cerrar Sesión</a>
+        </footer>
+    </div>
+
+</body>
+</html>

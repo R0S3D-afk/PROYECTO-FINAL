@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Repartidor</title>
+    <style>
+        /* Reset de márgenes y padding para una apariencia limpia */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2em;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        /* Estilo del formulario */
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            color: #333;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .alert {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8d7da;
+            color: #721c24;
+            border-radius: 5px;
+        }
+
+        .alert.success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        /* Mensaje de completado */
+        .completed-profile {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #d4edda;
+            color: #155724;
+            border-radius: 5px;
+            font-size: 1.1em;
+        }
+
+        /* Enlaces de navegación */
+        .nav-links {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .nav-links a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 15px;
+            font-size: 1.1em;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Perfil de Repartidor</h1>
+            <p>Por favor, completa tu perfil para comenzar a recibir pedidos.</p>
+        </header>
+
+        <form method="POST">
+            <div>
+                <label for="tipo_transporte">Tipo de Transporte:</label>
+                <input type="text" id="tipo_transporte" name="tipo_transporte" value="{{ repartidor.tipo_transporte if repartidor else '' }}" required>
+            </div>
+
+            <div>
+                <label for="licencia">Licencia:</label>
+                <input type="text" id="licencia" name="licencia" value="{{ repartidor.licencia if repartidor else '' }}" required>
+            </div>
+
+            <div>
+                <button type="submit">Guardar</button>
+            </div>
+        </form>
+
+        {% if repartidor %}
+            <div class="completed-profile">
+                <p>Ya tienes un perfil completo. Si deseas editarlo, realiza los cambios y vuelve a guardar.</p>
+            </div>
+        {% endif %}
+
+        <div class="nav-links">
+            <a href="{{ url_for('repartidores.panel') }}">Ir al Panel</a> |
+            <a href="{{ url_for('auth.logout') }}">Cerrar Sesión</a>
+        </div>
+    </div>
+</body>
+</html>

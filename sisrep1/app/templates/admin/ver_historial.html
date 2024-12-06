@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Envíos</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #343a40;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .table {
+            margin-bottom: 40px;
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background-color: #17a2b8;
+            color: #fff;
+            text-transform: uppercase;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        td {
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .btn-primary {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #117a8b;
+        }
+
+        .no-data {
+            text-align: center;
+            font-size: 1.2rem;
+            margin: 20px 0;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+
+<div class="content">
+    <h1>Historial de Envíos</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Fecha de Entrega</th>
+                <th>Estado</th>
+                <th>Cliente</th>
+                <th>Repartidor</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in historial %}
+                <tr>
+                    <td>{{ item['fecha_entrega'] }}</td>
+                    <td>{{ item['estado'] }}</td>
+                    <td>{{ item['cliente_nombre'] }}</td>
+                    <td>{{ item['repartidor_nombre'] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if not historial %}
+        <p class="no-data">No hay registros en el historial de envíos.</p>
+    {% endif %}
+
+    <a href="{{ url_for('admin.dashboard') }}" class="btn btn-primary">Volver al Panel</a>
+</div>
+
+</body>
+</html>
